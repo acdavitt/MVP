@@ -1,7 +1,7 @@
 const express = require('express');
 const queries = require('./db/queries');
 
-const PORT = 3004;
+const PORT = 3001;
 const app = express();
 
 app.use(express.json());

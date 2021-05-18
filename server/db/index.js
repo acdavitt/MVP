@@ -41,7 +41,7 @@ const citiesSchema = mongoose.Schema({
 
 const City = mongoose.model('City', citiesSchema);
 
-const addCity = (city, POIs) => {
+const save = (city, POIs) => {
   let formattedPois = []
   for (let poi of POIs) {
     let formattedPoi = {
@@ -49,20 +49,21 @@ const addCity = (city, POIs) => {
       image: poi.images[0].sizes.medium.url,
       thumbnail: poi.images[0].sizes.thumbnail.url,
       snippet: poi.snippet,
-      link: attribution[1].url
+      link: poi.attribution[1].url
     }
     formattedPois.push(formattedPoi);
   }
+  console.log({formattedPois})
   let newCity = new City({
     city: city,
     pois: formattedPois
   })
 
-  Repo.exists({city: city}, (err, isPresent) => {
+  City.exists({city: city}, (err, isPresent) => {
     if (err) {
       console.log('Already present in db:', err)
     } else if (!isPresent) {
-      newCity.addCity()
+      newCity.save()
       .then(result => result)
       .catch(err => console.log(err))
     }
@@ -70,7 +71,7 @@ const addCity = (city, POIs) => {
 };
 
 
-module.exports.addCity = addCity;
+module.exports.save = save;
 
 
 

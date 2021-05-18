@@ -1,7 +1,14 @@
 //queries ti db in this file
 const db = require('./index');
 
+// const City = mongoose.model('City', db.citiesSchema);
 
-module.exports = {
+// const addCity = (POIs) => {
+//   for (let poi of POIs) {
+//     let addPoi
+//   }
+// }
 
-}
+// module.exports = {
+//   addCity
+// }

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {API} from '../../secrets.js';
+import config from '../../secrets.js';
 
 
 const App = () => {

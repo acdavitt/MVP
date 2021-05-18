@@ -21,7 +21,11 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
-      }
+      },
+      // { test: /\.txt$/,
+      //   include: SRC_DIR,
+      //   use: 'raw-loader'
+      // }
     ]
   },
   resolve: {

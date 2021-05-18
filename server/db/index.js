@@ -2,29 +2,10 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/cities', {useNewUrlParser: true , useUnifiedTopology: true});
 const db = mongoose.connection;
 
-// const { Seeder } = require('mongo-seeding');
-// const database = require('./config.js');
-
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('db connected!')
 });
-
-
-// const seeder = new Seeder(database.database);
-// const collections = seeder.readCollectionsFromPath(
-//   path.resolve('./Tenerife.js'),
-// );
-
-// seeder
-//   .import(collections)
-//   .then(() => {
-//     console.log('Database seeded');
-//   })
-//   .catch(err => {
-//     console.log('Error', err);
-//   });
-
 
 const citiesSchema = mongoose.Schema({
   city: String,

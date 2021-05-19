@@ -10,7 +10,17 @@ app.use(express.static('dist'));
 
 app.get('/cities/:city', (req, res) => {
   queries.retrieve(req.params.city)
-  .then(pois => res.send(pois))
+  .then(pois => {
+    if (pois.length) {
+      res.send(pois)
+    } else {
+      triposoReq.getPOIByCity(req.params.city)
+      .then((pois) => {
+        queries.save(req.params.city, pois.results)
+      })
+      .then(result => res.send(result))
+    }
+  })
   .catch(err => res.status(400).send('Unable to retrieve city info'))
 })
 

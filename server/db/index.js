@@ -51,8 +51,14 @@ const save = (city, POIs) => {
   })
 };
 
+const retrieve = (city) => {
+  return City.find( { city: city } );
+}
 
-module.exports.save = save;
+module.exports = {
+  save,
+  retrieve
+};
 
 
 

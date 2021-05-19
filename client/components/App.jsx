@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../../secrets.js';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -38,17 +38,36 @@ const theme = createMuiTheme({
   },
 });
 
+
 const App = () => {
+  const [city, setCity] = useState();
+  const [pois, setPois] = useState()
+
+  const getCityPois = async () => {
+    let poisForCity = await axios.get(`/cities/${city}`);
+    return poisForCity.data;
+  }
+
+  useEffect(() => {
+    setPois(getCityPois());
+  }
+  //  async function getCityPois() {
+  //     let poisForCity = await axios.get('/cities', city);
+  //     setPois(poisForCity.data)
+  //   }
+
+  ,[city])
+
   return (
     <ThemeProvider theme={theme}>
       <AppBar>
         <Toolbar>
-          <QueryForm></QueryForm>
+          <QueryForm setCity={setCity} getCityPois={getCityPois}></QueryForm>
         </Toolbar>
       </AppBar>
       <Container maxWidth="lg">
         <Grid container spacing={10}>
-          <Lists></Lists>
+          <Lists pois={pois}></Lists>
         </Grid>
       </Container>
     </ThemeProvider>

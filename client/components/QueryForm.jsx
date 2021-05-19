@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles} from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 
 
@@ -32,19 +32,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const QueryForm = () => {
+const QueryForm = ({
+  getCityPois,
+  setCity
+}) => {
   const classes = useStyles();
+
+  const handleChange = (e) => {
+    setCity(e.target.value);
+  }
+
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      getCityPois();
+    }
+  }
+
+
   return (
     // <form noValidate autoComplete="off">
     //   <TextField id="outlined-basic" label="City Search" variant="outlined" />
     // </form>
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon />
-      </div>
+    <div onKeyDown={handleEnter} className={classes.search}>
+      <SearchIcon className={classes.searchIcon} />
       <InputBase
-      className={classes.base}
-      placeholder="City search..."
+        className={classes.base}
+        placeholder="City search..."
+        onChange={handleChange}
       />
     </div>
   )

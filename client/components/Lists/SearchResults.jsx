@@ -1,5 +1,4 @@
 import React from 'react';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -18,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 const SearchResults = () => {
   const classes = useStyles();
   return (
-    <List className={classes.root}> Search Results
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt="POI name" src="thumbnail" />
@@ -38,8 +36,6 @@ const SearchResults = () => {
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
-
-    </List>
   )
 }
 

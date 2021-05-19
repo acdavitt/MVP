@@ -24,7 +24,7 @@ const Lists = ({ pois, city }) => {
   <>
     <Grid item xs={6}>
       <List className={classes.root}> {`${city} Points of Interest`}
-        {pois.map(poi => <SearchResults userPois={userPois} setUserPois={setUserPois} key={poi.name} poi={poi}/>)}
+        {pois.length ? pois.map(poi => <SearchResults userPois={userPois} setUserPois={setUserPois} key={poi.name} poi={poi}/>) : <p>Sorry, information about this city is not available yet!</p>}
       </List>
     </Grid>
     <Grid item xs={6}>

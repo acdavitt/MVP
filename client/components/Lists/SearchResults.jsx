@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -14,28 +14,34 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const SearchResults = () => {
+const SearchResults = ({ poi, userPois, setUserPois }) => {
   const classes = useStyles();
+
+  const handleIconClick = (e) => {
+    let copy = userPois.slice();
+    copy.push(poi);
+    setUserPois(copy);
+  }
+
   return (
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="POI name" src="thumbnail" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="POI name"
-          secondary={
-            <>
-              {"snippet"}
-              {"link"}
-            </>
-          }
-        />
-        <ListItemSecondaryAction>
-          <IconButton aria-label="Add Location">
-            <AddLocationIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
+    <ListItem alignItems="flex-start">
+      <ListItemAvatar>
+        <Avatar alt={poi.name} src={poi.thumbnail} />
+      </ListItemAvatar>
+      <ListItemText
+        primary={poi.name}
+        secondary={
+          <>
+            {`${poi.snippet}\n${poi.link}`}
+          </>
+        }
+      />
+      <ListItemSecondaryAction>
+        <IconButton onClick={handleIconClick} aria-label="Add Location">
+          <AddLocationIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
   )
 }
 

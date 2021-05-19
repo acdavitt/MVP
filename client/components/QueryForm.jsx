@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    left: 1350,
+    left: 1000,  //1350
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.secondary.dark, 0.15),
     '&:hover': {
@@ -33,10 +33,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const QueryForm = ({
-  getCityPois,
-  setCity
+  setAppCity
 }) => {
   const classes = useStyles();
+  const [city, setCity] = useState();
 
   const handleChange = (e) => {
     setCity(e.target.value);
@@ -44,7 +44,8 @@ const QueryForm = ({
 
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
-      getCityPois();
+      setAppCity(city);
+      setCity('');
     }
   }
 

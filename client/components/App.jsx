@@ -38,36 +38,31 @@ const theme = createMuiTheme({
   },
 });
 
-
 const App = () => {
-  const [city, setCity] = useState();
-  const [pois, setPois] = useState()
-
-  const getCityPois = async () => {
-    let poisForCity = await axios.get(`/cities/${city}`);
-    return poisForCity.data;
-  }
+  const [city, setAppCity] = useState('Tenerife');
+  const [pois, setPois] = useState([])
 
   useEffect(() => {
-    setPois(getCityPois());
-  }
-  //  async function getCityPois() {
-  //     let poisForCity = await axios.get('/cities', city);
-  //     setPois(poisForCity.data)
-  //   }
+    const getCityPois = async (city) => {
+      const poisForCity = await axios.get(`/cities/${city}`);
+      setPois(poisForCity.data);
+    }
+    getCityPois(city);
+  },[city])
 
-  ,[city])
 
   return (
     <ThemeProvider theme={theme}>
       <AppBar>
         <Toolbar>
-          <QueryForm setCity={setCity} getCityPois={getCityPois}></QueryForm>
+          <QueryForm setAppCity={setAppCity}></QueryForm>
         </Toolbar>
       </AppBar>
       <Container maxWidth="lg">
         <Grid container spacing={10}>
-          <Lists pois={pois}></Lists>
+          {console.log({pois})}
+          {pois.length && <Lists pois={pois[0].pois}></Lists>
+          }
         </Grid>
       </Container>
     </ThemeProvider>

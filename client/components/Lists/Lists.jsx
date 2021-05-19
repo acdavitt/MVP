@@ -15,16 +15,19 @@ const useStyles = makeStyles((theme) => ({
 
 const Lists = ({ pois }) => {
   const classes = useStyles();
+  const [userPois, setUserPois] = useState([]);
 
   return (
   <>
     <Grid item xs={6}>
       <List className={classes.root}> Search Results
-        <SearchResults />
+        {pois.map(poi => <SearchResults userPois={userPois} setUserPois={setUserPois} key={poi.name} poi={poi}/>)}
       </List>
     </Grid>
     <Grid item xs={6}>
-      <UserList></UserList>
+      <List className={classes.root}> Saved Places
+        {userPois.map(poi => <UserList key={poi.name} poi={poi}/>)}
+      </List>
     </Grid>
   </>
   )

@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     left: 1000,  //1350
+    top: 5,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.secondary.dark, 0.15),
     '&:hover': {

@@ -44,7 +44,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 400,
     fontFamily: 'Handlee',
     fontSize: 75,
-    color: '#000030'
+    color: '#000030',
+  },
+  header: {
+    fontFamily: 'Handlee',
+    fontSize: 75,
+    color: '#000030',
+    margin: 0,
   }
 }))
 
@@ -67,6 +73,7 @@ const App = () => {
       <AppBar>
         <Toolbar>
           <QueryForm setAppCity={setAppCity}></QueryForm>
+          <h1 className={classes.header}>Sight on Sites</h1>
         </Toolbar>
       </AppBar>
       <Container maxWidth="lg">

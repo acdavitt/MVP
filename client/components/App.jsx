@@ -4,6 +4,9 @@ import config from '../../secrets.js';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import InputBase from '@material-ui/core/InputBase';
 
 import Lists from './Lists/Lists.jsx';
 import QueryForm from './QueryForm.jsx';
@@ -38,16 +41,14 @@ const theme = createMuiTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <AppBar>
+        <Toolbar>
+          <QueryForm></QueryForm>
+        </Toolbar>
+      </AppBar>
       <Container maxWidth="lg">
-        <Grid container spacing={4}>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={8}>
-            <QueryForm></QueryForm>
-          </Grid>
-          <Grid item xs={2}></Grid>
-          <Grid container spacing={10}>
-            <Lists></Lists>
-          </Grid>
+        <Grid container spacing={10}>
+          <Lists></Lists>
         </Grid>
       </Container>
     </ThemeProvider>

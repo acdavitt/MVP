@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const SearchResults = ({ poi, userPois, setUserPois }) => {
+const SearchResults = ({ poi, userPois, setUserPois}) => {
   const classes = useStyles();
 
   const handleIconClick = (e) => {

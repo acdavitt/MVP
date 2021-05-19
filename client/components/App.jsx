@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Lists from './Lists/Lists.jsx';
 import QueryForm from './QueryForm.jsx';
@@ -38,8 +39,18 @@ const theme = createMuiTheme({
   },
 });
 
+const useStyles = makeStyles((theme) => ({
+  placeholder: {
+    marginTop: 400,
+    fontFamily: 'Handlee',
+    fontSize: 75,
+    color: '#000030'
+  }
+}))
+
 const App = () => {
-  const [city, setAppCity] = useState('Tenerife');
+  const classes = useStyles();
+  const [city, setAppCity] = useState('');
   const [pois, setPois] = useState([])
 
   useEffect(() => {
@@ -60,9 +71,7 @@ const App = () => {
       </AppBar>
       <Container maxWidth="lg">
         <Grid container spacing={10}>
-          {console.log({pois})}
-          {pois.length && <Lists pois={pois[0].pois}></Lists>
-          }
+          {pois.length ? <Lists pois={pois[0].pois} city={city}></Lists> : <p className={classes.placeholder}>Where do you want to go?</p>}
         </Grid>
       </Container>
     </ThemeProvider>

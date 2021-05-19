@@ -5,6 +5,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,10 +15,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-
-const UserList = ( {poi} ) => {
-
+const UserList = ( {poi, userPois, setUserPois} ) => {
   const classes = useStyles();
+
+  const handleIconClick = (e) => {
+    let copy = userPois.slice();
+    let index = copy.findIndex(site => site.name === poi.name);
+    copy.splice(index, 1);
+    setUserPois(copy);
+    localStorage.setItem('userPois', JSON.stringify(copy));
+  }
 
   return (
     <ListItem alignItems="flex-start">
@@ -30,6 +39,11 @@ const UserList = ( {poi} ) => {
           </>
         }
       />
+       <ListItemSecondaryAction>
+        <IconButton onClick={handleIconClick} aria-label="Delete place">
+          <DeleteForeverIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
     </ListItem>
   )
 }

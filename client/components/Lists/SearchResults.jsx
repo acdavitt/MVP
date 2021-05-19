@@ -21,6 +21,7 @@ const SearchResults = ({ poi, userPois, setUserPois}) => {
     let copy = userPois.slice();
     copy.push(poi);
     setUserPois(copy);
+    localStorage.setItem('userPois', JSON.stringify(copy));
   }
 
   return (

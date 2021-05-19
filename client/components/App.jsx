@@ -54,19 +54,35 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+const icons = [<i className="fas fa-umbrella-beach"></i>, <i className="fas fa-archway"></i>, <i className="fas fa-plane-departure"></i>, <i className="fas fa-globe-americas"></i>, <i class="fas fa-luggage-cart"></i>, <i class="fas fa-map"></i>, <i class="fas fa-passport"></i>]
+
 const App = () => {
   const classes = useStyles();
   const [city, setAppCity] = useState('');
   const [pois, setPois] = useState([])
+  const [icon, setIcon] = useState([icons[0]])
 
   useEffect(() => {
     const getCityPois = async (city) => {
       const poisForCity = await axios.get(`/cities/${city}`);
       setPois(poisForCity.data);
     }
-    getCityPois(city);
-  },[city])
+    if (city) {
+      getCityPois(city);
+    }
+  }, [city])
 
+  useEffect(()=> {
+    let i = 0;
+    const rotateIcon = () => {
+      i++;
+      if (i === icons.length) {
+        i = 0;
+      }
+      setIcon(icons[i]);
+    };
+    setInterval(rotateIcon, 1000)
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -78,7 +94,7 @@ const App = () => {
       </AppBar>
       <Container maxWidth="lg">
         <Grid container spacing={10}>
-          {pois.length ? <Lists pois={pois[0].pois} city={city}></Lists> : <p className={classes.placeholder}>Where do you want to go?</p>}
+          {pois.length ? <Lists pois={pois[0].pois} city={city}></Lists> : <p className={classes.placeholder}>Where do you want to go? {icon}</p>}
         </Grid>
       </Container>
     </ThemeProvider>

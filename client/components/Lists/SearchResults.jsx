@@ -7,10 +7,25 @@ import { makeStyles } from '@material-ui/core/styles';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 100
+  },
+  avatar: {
+    height: 100,
+    width: 100,
+    marginRight: 10
+  },
+  snippet: {
+    color: theme.palette.text.primary,
+    marginRight: 20
+  },
+  icon: {
+    fontSize: 40,
+    color: theme.palette.text.primary,
   }
 }))
 
@@ -25,21 +40,18 @@ const SearchResults = ({ poi, userPois, setUserPois}) => {
   }
 
   return (
-    <ListItem alignItems="flex-start">
+    <ListItem button component={Link} href={poi.link} target="_blank" rel="noopener" alignItems="flex-start">
       <ListItemAvatar>
-        <Avatar alt={poi.name} src={poi.thumbnail} />
+        <Avatar className={classes.avatar} alt={poi.name} src={poi.thumbnail} />
       </ListItemAvatar>
       <ListItemText
-        primary={poi.name}
-        secondary={
-          <>
-            {`${poi.snippet}\n${poi.link}`}
-          </>
-        }
+        disableTypography
+        primary={<Typography variant="h5" className={classes.snippet}>{poi.name}</Typography>}
+        secondary={<Typography variant="body1" className={classes.snippet}>{poi.snippet}</Typography>}
       />
       <ListItemSecondaryAction>
         <IconButton onClick={handleIconClick} aria-label="Add Location">
-          <AddLocationIcon />
+          <AddLocationIcon className={classes.icon}/>
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>

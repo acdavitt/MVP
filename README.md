@@ -103,11 +103,12 @@ To create a API token:
 2. Request token
 3. Use the following format for requests to the API: 
 
-https://www.triposo.com/api/20210317/location.json?id=**city**&account=**account ID**&token=**API token**
+https://www.triposo.com/api/20210317/location.json?id=<city>&account=<account ID>&token=<API token>
   
 or by adding HTTP headers to your request:
 
 X-Triposo-Account: **account ID**
+ <br />
 X-Triposo-Token: **API token**
   
 Note that this token is only viewable once, at generation time. Make sure to copy it to a secure place and never check it into your git history.

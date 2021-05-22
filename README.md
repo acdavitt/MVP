@@ -28,7 +28,7 @@ The objective of this project was to create a full stack web application over a 
   * List of saved sites that persists upon page refresh and exiting the website
   * An item may be removed by clicking the 'X' icon
  
- ![](http://www.giphy.com/gifs/DwzBfwzttNyg8rJ1ei)
+ ![](https://media.giphy.com/media/DwzBfwzttNyg8rJ1ei/giphy.gif)
  
 # Stack
 

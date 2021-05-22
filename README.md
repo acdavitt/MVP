@@ -103,7 +103,7 @@ To create a API token:
 2. Request token
 3. Use the following format for requests to the API: 
 
-ht<span>tps://</span>www.triposo.com/api/20210317/location.json?id=**city**&account=**account ID**&token=**API token**
+ht<span>tps://</span>w<span>ww.</span>triposo.com/api/20210317/location.json?id=**city**&account=**account ID**&token=**API token**
   
 or by adding HTTP headers to your request:
 

@@ -13,7 +13,7 @@
 </p>
 
 # About
-The objective of this project was to create a full stack web application over a two day sprint.  Triposo's API was used to seed the MongoDB database with points of interest by city via requests from an Express server.  I was responsible for the end-to-end design and implementation of the application.
+The objective of this project was to create a full stack web application over a two day sprint. I was responsible for the end-to-end design and implementation of the application.
 
 ![](https://media.giphy.com/media/SOsiWsILc9OtOlJvsu/giphy.gif)
 
@@ -79,36 +79,3 @@ The objective of this project was to create a full stack web application over a 
 
 ## Trello
 A Trello board was used to create and track tickets.
-
-# Development
-
-## Repo
-`git clone https://github.com/acdavitt/MVP.git`
-
-## Install
-`npm install`
-
-## Start Scripts
-```
-npm run build:watch
-npm start
-npm start:server
-```
-
-## Triposo API Token
-
-To create a API token:
-
-1. Go to: https://www.triposo.com/api/console/20210317
-2. Request token
-3. Use the following format for requests to the API: 
-
-ht<span>tps://</span>w<span>ww.</span>triposo.com/api/20210317/location.json?id=**city**&account=**account ID**&token=**API token**
-  
-or by adding HTTP headers to your request:
-
-X-Triposo-Account: **account ID**
- <br />
-X-Triposo-Token: **API token**
-  
-Note that this token is only viewable once, at generation time. Make sure to copy it to a secure place and never check it into your git history.

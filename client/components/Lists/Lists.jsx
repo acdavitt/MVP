@@ -23,7 +23,7 @@ const Lists = ({ pois, city }) => {
   const classes = useStyles();
   const [userPois, setUserPois] = useState(JSON.parse(localStorage.getItem('userPois')) || []);
 
-  let storedPois = JSON.parse(localStorage.getItem('userPois'))
+  let storedPois = JSON.parse(localStorage.getItem('userPois')) || [];
 
   return (
   <>
